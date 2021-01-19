@@ -21,7 +21,7 @@ const depRelation: DepRelation = [] // 数组！
 collectCodeAndDeps(resolve(projectRoot, 'index.js'))
 
 // 先创建 dist 目录
-const dir = `./${projectName}/dist`
+const dir = `./${projectName}/dist2`
 mkdir('-p', dir) 
 // 再创建 bundle 文件
 writeFileSync(join(dir, 'bundle.js'), generateCode()) 
@@ -73,6 +73,7 @@ function collectCodeAndDeps(filepath: string) {
   let code = readFileSync(filepath).toString()
   if(/\.css$/.test(filepath)){ // 如何文件路径以 .css 结尾
     code = require('./loaders/css-loader.js')(code)
+    code = require('./loaders/style-loader.js')(code)
   }
   const { code: es5Code } = babel.transform(code, {
     presets: ['@babel/preset-env']

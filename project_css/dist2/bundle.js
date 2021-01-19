@@ -71,7 +71,7 @@ exports["default"] = _default;
 
 if (document) {
   var style = document.createElement('style');
-  style.innerHTML = "\nconst str = \"body {\\r\\n  color: red;\\r\\n}\\r\\n\"\nexport default str\n";
+  style.innerHTML = "body {\r\n  color: red;\r\n}\r\n";
   document.head.appendChild(style);
 }
       }
