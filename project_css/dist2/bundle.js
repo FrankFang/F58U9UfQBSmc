@@ -71,7 +71,13 @@ exports["default"] = _default;
 
 if (document) {
   var style = document.createElement('style');
-  style.innerHTML = "\nconst str = \"body {\\r\\n  color: red;\\r\\n}\\r\\n\"\nexport default str\n";
+
+  style.innerHTML = function () {
+    console.log('before code');
+    var cssCode = "body {\r\n  color: red;\r\n}\r\n";
+    return cssCode;
+  }();
+
   document.head.appendChild(style);
 }
       }
